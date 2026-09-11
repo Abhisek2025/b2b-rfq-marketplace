@@ -2,8 +2,12 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import dotenv from "dotenv";
+import User from "./src/models/User.js";
+import { sequelize } from "./src/config/database.js";
+import authRoutes from "./src/routes/authRoutes.js";
 
 import { connectDatabase } from "./src/config/database.js";
+
 dotenv.config();
 
 const app = express();
@@ -16,6 +20,7 @@ app.use(cors({
 }));
 
 app.use(express.json());
+app.use("/api/auth", authRoutes);
 app.get("/api/health", (req,res)=>{
     res.status(200).json({
         success: true,
@@ -28,6 +33,8 @@ const PORT = process.env.PORT || 5000;
 const startServer = async()=>{
     try{
         await connectDatabase(); 
+        await User.sync();
+        console.log("Database User Table Synchronized");
         app.listen(PORT,()=>{
             console.log(`Server running on http://localhost:${PORT}`);
         });
