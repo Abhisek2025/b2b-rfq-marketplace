@@ -3,10 +3,14 @@ import cors from "cors";
 import helmet from "helmet";
 import dotenv from "dotenv";
 import User from "./src/models/User.js";
-import { sequelize } from "./src/config/database.js";
+import { sequelize,connectDatabase } from "./src/config/database.js";
 import authRoutes from "./src/routes/authRoutes.js";
+import testRoutes from "./src/routes/testRoutes.js";
+import rfqRoutes from "./src/routes/rfqRoutes.js";
+import RFQ from "./src/models/RFQ.js";
+import Quotation from "./src/models/Quotation.js";
+import quotationRoutes from "./src/routes/quotationRoutes.js";
 
-import { connectDatabase } from "./src/config/database.js";
 
 dotenv.config();
 
@@ -21,6 +25,9 @@ app.use(cors({
 
 app.use(express.json());
 app.use("/api/auth", authRoutes);
+app.use("/api/test", testRoutes);
+app.use("/api/rfqs", rfqRoutes);
+app.use("/api/quotations", quotationRoutes);
 app.get("/api/health", (req,res)=>{
     res.status(200).json({
         success: true,
@@ -34,7 +41,10 @@ const startServer = async()=>{
     try{
         await connectDatabase(); 
         await User.sync();
-        console.log("Database User Table Synchronized");
+        await RFQ.sync();
+        await Quotation.sync();
+
+        console.log("Database ALL Table Synchronized");
         app.listen(PORT,()=>{
             console.log(`Server running on http://localhost:${PORT}`);
         });
