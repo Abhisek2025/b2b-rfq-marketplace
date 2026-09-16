@@ -12,13 +12,13 @@ Buyers can create and manage product/service requirements and receive quotations
 
 ### 🚀 Try the Application
 
-<a href="https://b2b-rfq-marketplace-xi.vercel.app/login">
+<a href="https://quotebridge-beta.vercel.app">
   <img src="https://img.shields.io/badge/🚀%20LIVE%20DEMO-OPEN%20APPLICATION-4F46E5?style=for-the-badge" alt="Live Demo">
 </a>
 
 <br><br>
 
-🔗 **https://b2b-rfq-marketplace-xi.vercel.app/login**
+🔗 **[https://b2b-rfq-marketplace-xi.vercel.app/login](https://quotebridge-beta.vercel.app)**
 
 </div>
 
