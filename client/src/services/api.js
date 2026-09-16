@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://b2b-rfq-marketplace-t0by.onrender.com/api",
+  baseURL: "https://b2b-rfq-marketplace-1-gxvr.onrender.com",
   headers: {
     "Content-Type": "application/json",
   },
