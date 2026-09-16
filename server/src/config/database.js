@@ -1,4 +1,3 @@
-//```js
 import { Sequelize } from "sequelize";
 import dotenv from "dotenv";
 
@@ -16,7 +15,8 @@ export const sequelize = new Sequelize(
     dialectOptions: {
       ssl: {
         require: true,
-        rejectUnauthorized: false,
+        ca: process.env.AIVEN_CA_CERT.replace(/\\n/g, "\n"),
+        rejectUnauthorized: true,
       },
     },
 
@@ -47,4 +47,3 @@ export const connectDatabase = async () => {
 };
 
 export default sequelize;
-
