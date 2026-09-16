@@ -19,7 +19,7 @@ const app = express();
 app.use(helmet());
 
 app.use(cors({
-  origin: "https://b2b-rfq-marketplace-theta.vercel.app",
+  origin: "https://b2b-rfq-marketplace-xi.vercel.app",
   credentials: true,
 }));
 
